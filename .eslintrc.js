@@ -21,5 +21,10 @@ module.exports = {
   },
   rules: {
     'no-unused-vars': Rules.OFF,
+    'no-console': Rules.OFF,
+    'no-await-in-loop': Rules.OFF,
+    'class-methods-use-this': Rules.OFF,
+    'eol-last': Rules.OFF,
+    'import/prefer-default-export': Rules.OFF,
   },
 };

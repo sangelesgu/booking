@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "jest",
-    "lint": "eslint . --fix"
+    "lint": "eslint --fix --ext .js,.jsx ."
   },
   "keywords": [],
   "author": "",
@@ -19,6 +20,8 @@
     "prettier": "^2.2.1"
   },
   "dependencies": {
+    "colors": "^1.4.0",
+    "inquirer": "^8.0.0",
     "puppeteer": "^9.1.1"
   }
 }
