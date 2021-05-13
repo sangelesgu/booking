@@ -6,7 +6,7 @@ const menuOptions = [
   {
     type: 'list',
     name: 'option',
-    message: 'What hotel do you want to get price?',
+    message: 'What hotel do you want to get rooms?',
     choices: [{
         value: '1',
         name: `${'1.'.green} Hotel Condado`,
@@ -33,9 +33,9 @@ const menuOptions = [
 
 const inquirerMenu = async () => {
   console.clear();
-  console.log('====================================='.green);
+  console.log('|=====================================|'.green);
   console.log('         Choice an option: '.white);
-  console.log('=====================================\n'.green);
+  console.log('|=====================================|\n'.green);
 
   const {
     option
@@ -47,13 +47,13 @@ const pause = async () => {
   const pausa = [{
     type: 'input',
     name: 'push',
-    message: `Push ${'Enter'.blue} to continue`,
+    message: `Wait for results. Press ${'Enter'.blue} to continue`,
   }, ];
   console.log('\n');
   await inquirer.prompt(pausa);
 };
 
-export default {
+module.exports = {
   inquirerMenu,
   pause,
 };

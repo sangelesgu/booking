@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "test": "jest",
     "lint": "eslint --fix --ext .js,.jsx ."
@@ -21,6 +20,7 @@
   },
   "dependencies": {
     "colors": "^1.4.0",
+    "dayjs": "^1.10.4",
     "inquirer": "^8.0.0",
     "puppeteer": "^9.1.1"
   }

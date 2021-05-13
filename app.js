@@ -1,10 +1,11 @@
-import {
+const {
   inquirerMenu,
   pause
-} from './helpers/inquirer';
+} = require('./helpers/inquirer');
 
-import getDataFromStarChamps from './models/hotels';
-import getTodaysDate from './helpers/date';
+const getDataFromStarChamps = require('./models/hotels');
+const getTodaysDate = require('./helpers/date');
+const dayjs = require('dayjs');
 
 const {
   checkInDate,
@@ -21,20 +22,20 @@ const main = async () => {
         break;
 
       case '2':
-        console.log('Petit Ermitage');
+        console.log(checkInDate, '11-01-2021')
+        console.log(dayjs(checkInDate).locale('en').format('YYYY-MM-DD'));
         break;
 
       case '3':
-        getDataFromStarChamps(checkInDate, checkOutDate);
+        getDataFromStarChamps()
+          .then((data) => console.log(data))
+          .catch((err) => console.log(err))
         break;
 
       case '4':
         console.log('Cantara Grand Beach Resorts');
         break;
 
-      case '0':
-        console.clear();
-        break;
       default:
         return;
     }

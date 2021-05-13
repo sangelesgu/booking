@@ -1,7 +1,10 @@
+const dayjs = require('dayjs');
+
 const getTodaysDate = () => {
   const today = new Date();
-  const checkInDate = `${today.getDate()}/${(today.getMonth() + 1)}/${today.getFullYear()} ${today.toLocaleString('default', { month: 'short' })}`;
-  const checkOutDate = `${today.getDate() + 2}/${(today.getMonth() + 1)}/${today.getFullYear()} ${today.toLocaleString('default', { month: 'short' })}`;
+  const checkInDate = `${today.getDate()}-0${(today.getMonth() + 1)}-${today.getFullYear()}`;
+  const checkOutDate = `${today.getDate() + 3}-${(today.getMonth() + 1)}-${today.getFullYear()}`;
+  dayjs(checkInDate).locale('en')
   return {
     checkInDate,
     checkOutDate,
