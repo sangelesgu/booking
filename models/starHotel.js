@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer');
 const fs = require('fs');
 const dayjs = require('dayjs');
 
-const getDataFromStarChamps = async (checkIn = '13 may 2021', checkOut = '16 may 2021') => {
+const getDataFromStarChamps = async (checkIn = '13 jul 2021', checkOut = '16 jul 2021') => {
   const browser = await puppeteer.launch({
     headless: false,
   });
@@ -32,19 +32,20 @@ const getDataFromStarChamps = async (checkIn = '13 may 2021', checkOut = '16 may
     const info = [];
     $roomsRate.forEach(($room) => {
       info.push({
-        minPrice: $room.querySelector('.room-rates-item-price-moy').textContent.trim(),
+        minPrice: Number($room.querySelector('.room-rates-item-price-moy').textContent.trim().replace('€', '').trim()),
         conditions: $room.querySelector('.room-rates-item-title-meal-plan').textContent.trim(),
         currency: document.querySelector('.menu-currency-item-link span').textContent.trim(),
         occupancy: {
           adults: Number(document.querySelector('#applicationHost > div > div.page-background > div.page-main.page-host > header > div.filters-wrapper.mtn.mbs > p > span.filters-occupancy > span:nth-child(1)').textContent.trim()),
           child: Number(document.querySelector('#applicationHost > div > div.page-background > div.page-main.page-host > header > div.filters-wrapper.mtn.mbs > p > span.filters-occupancy > span:nth-child(4) > span:nth-child(1)').textContent.trim()),
         },
-        totalAmount: $room.querySelector('[data-bind="text: formattedTotalPrice"]').textContent.trim(),
+        totalAmount: Number($room.querySelector('[data-bind="text: formattedTotalPrice"]').textContent.trim().replace('€', '').trim()),
         language: document.querySelector('#applicationHost > div > div.page-head.js-page-head > div.this-menu-language > ul > li:nth-child(3) > a > span:nth-child(2)').textContent.trim(),
       });
     });
     return info;
   });
+  browser.close();
   return {
     checkInDate,
     checkOutDate,
