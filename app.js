@@ -5,6 +5,10 @@ const {
 
 const getDataFromStarChamps = require('./models/starHotel');
 const getDataFromCondado = require('./models/condadoHotel');
+const getDataFromErmitage = require('./models/ermitageHotel');
+const {
+  saveDB
+} = require('./helpers/saveFile');
 
 
 const main = async () => {
@@ -14,22 +18,22 @@ const main = async () => {
     switch (opt) {
       case '1':
         getDataFromCondado()
-          .then((rooms) => console.log(rooms))
+          .then((rooms) => {
+            console.log(rooms)
+            saveDB(rooms)
+          })
           .catch((err) => console.log(err))
         break;
 
       case '2':
-
+        getDataFromErmitage()
+          .then((data) => console.log(data))
         break;
 
       case '3':
         getDataFromStarChamps()
-          .then((data) => console.log(data))
+          .then((data) => saveDB(data))
           .catch((err) => console.log(err))
-        break;
-
-      case '4':
-        console.log('Cantara Grand Beach Resorts');
         break;
 
       default:

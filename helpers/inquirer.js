@@ -20,10 +20,6 @@ const menuOptions = [
         name: `${'3.'.green} Hotel Star Champs-Elysées`,
       },
       {
-        value: '4',
-        name: `${'4.'.green} Cantara Grand Beach Resorts`,
-      },
-      {
         value: '0',
         name: `${'0.'.green} Exit`,
       },
@@ -47,7 +43,7 @@ const pause = async () => {
   const pausa = [{
     type: 'input',
     name: 'push',
-    message: `Wait for results. Press ${'Enter'.blue} to continue`,
+    message: `Wait for results. And then press ${'Enter'.blue} to continue`,
   }, ];
   console.log('\n');
   await inquirer.prompt(pausa);
