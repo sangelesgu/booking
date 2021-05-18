@@ -39,8 +39,8 @@ const getDataFromCondado = async (checkIn = '13/08/2021', checkOut = '24/08/2021
     const pages = await browser.pages();
     await pages[2].waitForTimeout(4000);
 
-    const checkInDate = dayjs(checkIn).locale('en').format('DD-MM-YYYY');
-    const checkOutDate = dayjs(checkOut).locale('en').format('DD-MM-YYYY');
+    const checkInDate = dayjs(checkIn.replace('/', '').replace('08', 'aug')).locale('en').format('YYYY-MM-DD');
+    const checkOutDate = dayjs(checkOut.replace('/', '').replace('08', 'aug')).locale('en').format('YYYY-MM-DD');
 
     const data = await pages[2].evaluate(() => {
       const $roomsRate = document.querySelectorAll('.wbkv9-Entity-container._3HdkwWnIugh-zhuIVBx3fR._2QLLr47Hq9q0kHTlq6e23R');

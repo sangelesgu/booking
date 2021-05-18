@@ -18,10 +18,7 @@ const main = async () => {
     switch (opt) {
       case '1':
         getDataFromCondado()
-          .then((rooms) => {
-            console.log(rooms)
-            saveDB(rooms)
-          })
+          .then((rooms) => saveDB(rooms))
           .catch((err) => console.log(err))
         break;
 
